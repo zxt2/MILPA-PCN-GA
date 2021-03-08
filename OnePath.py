@@ -40,6 +40,6 @@ def Dijkstra(G, start, end, amount):
             path.append(nxt)
             last = nxt
     if path == 0:
-        print('未找到路径')
+        print('no path')
 
     return path
