@@ -4,9 +4,9 @@ import random
 import heapq
 
 def Genetic_Algorithm(G, k, start, end, totalAmount, itertime):
-    # 生成初始种群 若失败 individual=0
+    # generate initial population. if failed, individual=0
     individual = related.Generate_initial_population(G, k, start, end, totalAmount)
-    # print("初始种群：")
+    # print("initial population：")
     # for i in range(len(individual)):
     #     print(individual[i])
     FeeCost = 0
@@ -14,11 +14,11 @@ def Genetic_Algorithm(G, k, start, end, totalAmount, itertime):
     sumpathl = 0
 
     if individual != 0:
-        for i in range(itertime):   # 迭代次数
+        for i in range(itertime):   # iteration times
             individual = Genetic_iteration(G, k, individual, totalAmount)
 
         GA_cost = []
-        print('最后种群：')
+        print('last population：')
         for i in range(len(individual)):
             GA_cost.append(1)
             GA_cost[i] = related.CalculateCost(G, k, individual[i], individual[i]['amount'])
@@ -44,7 +44,7 @@ def Genetic_iteration(G, k, individual, totalAmount):
             fit[i] = related.Calculatefitness(G, k, individual[i], individual[i]['amount'])
 
     # 选择父辈
-    percent = 0.5  # 选择比例
+    percent = 0.5  # proportion for selection
     if individual != 0:
         father = related.selectfathers(individual, fit, percent)
 
@@ -56,7 +56,7 @@ def Genetic_iteration(G, k, individual, totalAmount):
         son[i] = related.Crossover_Operator(G, k, father[i])
 
     j = len(individual)
-    for i in range(len(son)):              # 将子辈加入种群
+    for i in range(len(son)):              # add son to the population
         individual.update({j: son[i]})
         j = j + 1
 
