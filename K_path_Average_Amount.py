@@ -14,7 +14,7 @@ def K_path_Average(G, k, start, end, totalAmount):
         else:
             for j in range(len(path[i]) - 1):
                 f = related.Calculatefee(G, path[i], amount, j + 1)
-                tmpG[path[i][j]][path[i][j + 1]]['balance'] = tmpG[path[i][j]][path[i][j + 1]]['balance'] - (amount + f)  # 减余额+fee
+                tmpG[path[i][j]][path[i][j + 1]]['balance'] = tmpG[path[i][j]][path[i][j + 1]]['balance'] - (amount + f)  # 减去balance+fee
     amount_array = []
     for i in range(k):
         amount_array.append(amount)
